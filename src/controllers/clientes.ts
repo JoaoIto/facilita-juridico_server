@@ -1,6 +1,6 @@
 import {pool} from '../config/db';
 
-export class Clientes {
+export class ClientesController {
     static async listarClientes(req, res) {
         try {
             console.log('Buscando clientes...');
@@ -35,6 +35,34 @@ export class Clientes {
             res.status(201).json({ message: 'Cliente criado com sucesso', cliente: rows[0] });
         } catch (error) {
             console.error('Erro ao criar cliente', error);
+            res.status(500).json({ error: 'Erro interno do servidor' });
+        }
+    }
+    static async filtrarClientes(req, res) {
+        try {
+            console.log('Filtrando clientes:', req.query);
+
+            // Constrói a consulta SQL com base nos parâmetros de consulta
+            let query = 'SELECT * FROM clientes WHERE true';
+            const values = [];
+
+            if (req.query.nome) {
+                query += ` AND nome ILIKE '%${req.query.nome}%'`;
+            }
+            if (req.query.email) {
+                query += ` AND email ILIKE '%${req.query.email}%'`;
+            }
+            if (req.query.telefone) {
+                const telefone = String(req.query.telefone).replace(/'/g, "''");
+                query += ` AND telefone ILIKE '%${telefone}%'`;
+            }
+
+            const { rows } = await pool.query(query);
+            console.log('Clientes filtrados:', rows);
+
+            res.status(200).json(rows);
+        } catch (error) {
+            console.error('Erro ao filtrar clientes', error);
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     }
