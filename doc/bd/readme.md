@@ -34,4 +34,11 @@ CREATE TABLE usuarios (
 );
 ````
 
+- Insert para usuário
+- **É DE MUITA IMPORTÂNCIA COLOCAR O USUÁRIO PADRÃO, PARA QUE POSSA AUTENTICAR!**
+
+````sql
+INSERT INTO usuarios (email, senha) VALUES ('joao@example.com', 'senha123');
+````
+
 ---
