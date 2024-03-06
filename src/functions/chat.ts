@@ -40,14 +40,3 @@ export function caixeiroViajante(pontos) {
 
     return rota;
 }
-
-// Exemplo de uso
-const pontos = [
-    { x: 0, y: 0 },
-    { x: 1, y: 2 },
-    { x: 2, y: 4 },
-    { x: 3, y: 1 }
-];
-
-const rota = caixeiroViajante(pontos);
-

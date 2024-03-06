@@ -1,5 +1,6 @@
 // Função para encontrar a rota mais curta
-import {calcularDistanciaTotal, permutacoesClientes} from "./function";
+import permutacoesClientes from "./function";
+import calcularDistanciaTotal from "./function";
 
 export function encontrarRotaMaisCurta(clientes) {
     const permutacoes = permutacoesClientes(clientes);

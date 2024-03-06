@@ -6,7 +6,7 @@ function calcularDistancia(ponto1, ponto2) {
 }
 
 // Função para calcular a distância total de uma rota
-function calcularDistanciaTotal(rota, clientes) {
+export default function calcularDistanciaTotal(rota, clientes) {
     let distanciaTotal = 0;
     for (let i = 0; i < rota.length - 1; i++) {
         distanciaTotal += calcularDistancia(clientes[rota[i]], clientes[rota[i + 1]]);
@@ -53,7 +53,7 @@ function caixeiroViajante(pontos) {
 }
 
 // Função para gerar todas as permutações possíveis dos clientes
-function permutacoesClientes(clientes) {
+export default function permutacoesClientes(clientes) {
     const permutacoes = [];
     const tamanho = clientes.length;
     const indices = Array.from({ length: tamanho }, (_, i) => i);
@@ -75,5 +75,3 @@ function permutacoesClientes(clientes) {
     permutar();
     return permutacoes;
 }
-
-module.exports = { calcularDistancia, calcularDistanciaTotal, caixeiroViajante };
