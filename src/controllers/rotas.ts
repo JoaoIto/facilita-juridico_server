@@ -1,5 +1,5 @@
 import { pool } from '../config/db'; // Importe a pool de conexão com o banco de dados
-import {caixeiroViajante} from '../functions/chat'
+import {caixeiroViajante} from '../functions/rotasCalc'
 
 export class RotaController {
     static async calcularRota(req, res) {
