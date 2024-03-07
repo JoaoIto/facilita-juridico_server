@@ -25,11 +25,19 @@ export class ClientesController {
                 return res.status(400).json({error: 'Nome, email, telefone, coordenada X e coordenada Y são obrigatórios'});
             }
 
+            /// Verifica se o formato do telefone é válido
+            const telefoneValido = /^\d{11}$/.test(telefone);
+            if (!telefoneValido) {
+                console.log({error: 'Formato de telefone inválido'})
+                return res.status(400).json({ error: 'Formato de telefone inválido' });
+            }
+
             // Verifica se já existe um cliente com o mesmo telefone ou email
             const clienteExistente = await pool.query('SELECT * FROM clientes WHERE email = $1 OR telefone = $2', [email, telefone]);
             console.log(clienteExistente);
 
             if (clienteExistente.rowCount > 0) {
+                console.log({error: 'Cliente com mesmo email ou telefone já cadastrado'})
                 return res.status(400).json({error: 'Cliente com mesmo email ou telefone já cadastrado'});
             }
 
