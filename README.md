@@ -3,21 +3,6 @@
 Este é o server backend construído em ***Node.js*** com ***Express.js*** para o 
 gerenciamento de clientes da **Facilita Jurídico**.
 
-## Sistema de Gerenciamento de Clientes
-## Parte 1
-Uma empresa que realiza limpeza em residências enfrenta desafios no gerenciamento de seus clientes 
-e busca uma solução eficiente para cadastrar e visualizar as informações que hoje são controladas 
-em planilhas. Para centralizar as informações e ajudar na expansão da empresa, ela deseja uma plataforma 
-onde seja possível gerenciar os seus clientes. O sistema deve ser composto por um backend em Node.js utilizando PostgreSQL 
-como banco de dados.
-
-A empresa utiliza as seguintes informações para gerenciar seus clientes: **nome, email e telefone**.
-
-Na plataforma criada deve ser possível:
-
-- Listar os seus clientes e filtrar com base nas informações cadastradas
-- Cadastrar clientes novos
-
 ---
 
 
@@ -54,6 +39,9 @@ yarn install
 
 2. Crie um banco de dados PostgreSQL para o projeto e configure as credenciais de acesso no arquivo `config/db.ts`.
 
+3. Os scripts de DDL estão no **``./doc/bd/readme.md``**.
+
+
 ## Executando o Servidor
 
 1. Após a instalação das dependências e a configuração do banco de dados, você pode iniciar o servidor usando o seguinte comando:
@@ -73,10 +61,11 @@ Isso iniciará o servidor backend. Você verá uma mensagem indicando que o serv
 
 1. O servidor oferece as seguintes funcionalidades:
 
-   - Listar os clientes: Envie uma solicitação GET para `http://localhost:8080/clientes` para listar todos os clientes cadastrados. 
+   - Listar os clientes: Envie uma solicitação **GET** para `http://localhost:8080/clientes` para listar todos os clientes cadastrados. 
    
-   - Você também pode filtrar os clientes enviando parâmetros de consulta (por exemplo, `http://localhost:8080/clientes/filtro?nome=Joao`).
+   - Você também pode filtrar os clientes enviando parâmetros de consulta **GET** (por exemplo, `http://localhost:8080/clientes/filtro?nome=Joao`).
    
-   - Cadastrar um novo cliente: Envie uma solicitação POST para `http://localhost:8080/clientes/cadastrar` com os dados do cliente no corpo da requisição no formato JSON.
+   - Cadastrar um novo cliente: Envie uma solicitação **POST** para `http://localhost:8080/clientes/cadastrar` com os dados do cliente no corpo da requisição no formato JSON.
 
+   - Cálculo das rotas dos clientes **GET**: ``http:localhost:8080/clientes/rota``
 ---

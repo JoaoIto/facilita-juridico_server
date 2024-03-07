@@ -25,6 +25,22 @@ export class ClientesController {
                 return res.status(400).json({error: 'Nome, email, telefone, coordenada X e coordenada Y são obrigatórios'});
             }
 
+            /// Verifica se o formato do telefone é válido
+            const telefoneValido = /^\d{11}$/.test(telefone);
+            if (!telefoneValido) {
+                console.log({error: 'Formato de telefone inválido'})
+                return res.status(400).json({ error: 'Formato de telefone inválido' });
+            }
+
+            // Verifica se já existe um cliente com o mesmo telefone ou email
+            const clienteExistente = await pool.query('SELECT * FROM clientes WHERE email = $1 OR telefone = $2', [email, telefone]);
+            console.log(clienteExistente);
+
+            if (clienteExistente.rowCount > 0) {
+                console.log({error: 'Cliente com mesmo email ou telefone já cadastrado'})
+                return res.status(400).json({error: 'Cliente com mesmo email ou telefone já cadastrado'});
+            }
+
             // Insere o novo cliente no banco de dados, incluindo as coordenadas
             const query = 'INSERT INTO clientes (nome, email, telefone, coordenada_x, coordenada_y) VALUES ($1, $2, $3, $4, $5) RETURNING *'; // Altere os nomes dos campos de coordenadas conforme a estrutura da sua tabela
             const values = [nome, email, telefone, coordenada_x, coordenada_y];
@@ -38,6 +54,7 @@ export class ClientesController {
             res.status(500).json({error: 'Erro interno do servidor'});
         }
     }
+
 
     static async filtrarClientes(req, res) {
         try {
