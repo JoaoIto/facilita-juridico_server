@@ -61,10 +61,11 @@ Isso iniciará o servidor backend. Você verá uma mensagem indicando que o serv
 
 1. O servidor oferece as seguintes funcionalidades:
 
-   - Listar os clientes: Envie uma solicitação GET para `http://localhost:8080/clientes` para listar todos os clientes cadastrados. 
+   - Listar os clientes: Envie uma solicitação **GET** para `http://localhost:8080/clientes` para listar todos os clientes cadastrados. 
    
-   - Você também pode filtrar os clientes enviando parâmetros de consulta (por exemplo, `http://localhost:8080/clientes/filtro?nome=Joao`).
+   - Você também pode filtrar os clientes enviando parâmetros de consulta **GET** (por exemplo, `http://localhost:8080/clientes/filtro?nome=Joao`).
    
-   - Cadastrar um novo cliente: Envie uma solicitação POST para `http://localhost:8080/clientes/cadastrar` com os dados do cliente no corpo da requisição no formato JSON.
+   - Cadastrar um novo cliente: Envie uma solicitação **POST** para `http://localhost:8080/clientes/cadastrar` com os dados do cliente no corpo da requisição no formato JSON.
 
+   - Cálculo das rotas dos clientes **GET**: ``http:localhost:8080/clientes/rota``
 ---
