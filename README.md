@@ -3,21 +3,6 @@
 Este é o server backend construído em ***Node.js*** com ***Express.js*** para o 
 gerenciamento de clientes da **Facilita Jurídico**.
 
-## Sistema de Gerenciamento de Clientes
-## Parte 1
-Uma empresa que realiza limpeza em residências enfrenta desafios no gerenciamento de seus clientes 
-e busca uma solução eficiente para cadastrar e visualizar as informações que hoje são controladas 
-em planilhas. Para centralizar as informações e ajudar na expansão da empresa, ela deseja uma plataforma 
-onde seja possível gerenciar os seus clientes. O sistema deve ser composto por um backend em Node.js utilizando PostgreSQL 
-como banco de dados.
-
-A empresa utiliza as seguintes informações para gerenciar seus clientes: **nome, email e telefone**.
-
-Na plataforma criada deve ser possível:
-
-- Listar os seus clientes e filtrar com base nas informações cadastradas
-- Cadastrar clientes novos
-
 ---
 
 
@@ -53,6 +38,9 @@ yarn install
 1. Certifique-se de ter o PostgreSQL instalado em sua máquina. Você pode baixá-lo em [https://www.postgresql.org/](https://www.postgresql.org/).
 
 2. Crie um banco de dados PostgreSQL para o projeto e configure as credenciais de acesso no arquivo `config/db.ts`.
+
+3. Os scripts de DDL estão no **``./doc/bd/readme.md``**.
+
 
 ## Executando o Servidor
 
